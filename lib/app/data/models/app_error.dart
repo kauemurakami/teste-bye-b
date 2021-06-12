@@ -6,20 +6,16 @@ String appErrorToJson(AppError data) => json.encode(data.toJson());
 
 class AppError {
   AppError({
-    this.status,
-    this.message,
+    this.errors,
   });
 
-  int? status;
-  String? message;
+  String? errors;
 
   factory AppError.fromJson(Map<String, dynamic> json) => AppError(
-        status: json["status"],
-        message: json["message"],
+        errors: json["errors"],
       );
 
   Map<String, dynamic> toJson() => {
-        "status": status,
-        "message": message,
+        "errors": errors,
       };
 }

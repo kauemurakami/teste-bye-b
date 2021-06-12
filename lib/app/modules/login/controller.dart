@@ -28,7 +28,7 @@ class LoginController extends GetxController {
       showTopSnackBar(
           Get.overlayContext!,
           CustomSnackBarWidget(
-              data.message, Icons.sentiment_dissatisfied_outlined));
+              data.errors, Icons.sentiment_dissatisfied_outlined));
     } else {
       // Get.offNamed(Routes.NAVIGATION);
     }
@@ -49,11 +49,11 @@ class LoginController extends GetxController {
   savedEmail(v) => this.auth?.user.update((user) => user?.username = v);
 
   changeSenha(v) {
-    if (v.length > 6) {
+    if (v.length > 3) {
       this.auth?.user.update((user) => user?.senha = v);
     } else {}
   }
 
-  validateSenha(v) => v.length > 6 ? null : 'Insira um e-mail válido.';
+  validateSenha(v) => v.length > 3 ? null : 'Insira um e-mail válido.';
   savedSenha(v) => this.auth?.user.update((user) => user?.senha = v);
 }

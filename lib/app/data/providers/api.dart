@@ -10,7 +10,9 @@ class MyApi extends GetConnect {
   login(email, senha) async {
     AuthService auth = Get.find<AuthService>();
     final response = await post('$baseUrl/login',
-        json.encode({"email": "$email", "password": "$senha"}), decoder: (res) {
+        json.encode({"username": "$email", "password": "$senha"}),
+        decoder: (res) {
+      print(res);
       return res;
     });
     if (response.statusCode == 200) {
