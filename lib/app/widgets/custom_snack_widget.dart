@@ -1,3 +1,4 @@
+import 'package:byebank/app/data/services/configs/service.dart';
 import 'package:byebank/core/values/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -5,6 +6,7 @@ import 'package:glassmorphism/glassmorphism.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 
 class CustomSnackBarWidget extends Container {
+  final config = Get.find<AppConfigService>();
   final String message;
   final IconData icon;
   CustomSnackBarWidget(this.message, this.icon);
@@ -38,7 +40,7 @@ class CustomSnackBarWidget extends Container {
         child: CustomSnackBar.success(
             icon: Icon(
               this.icon,
-              color: blackColor,
+              color: this.config.getTheme() ? whiteColor : blackColor,
               size: 120.0,
             ),
             backgroundColor: Colors.transparent,

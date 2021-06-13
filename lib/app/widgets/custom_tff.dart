@@ -40,6 +40,9 @@ class CustomTffWidget extends Container {
             focusColor: this.config.getTheme() ? Colors.white : Colors.black,
           )),
           child: TextFormField(
+            style: TextStyle(
+              color: this.config.getTheme() ? Colors.white : Colors.black,
+            ),
             initialValue: this.initialValue,
             enabled: this.enabled,
             controller: this.controller,

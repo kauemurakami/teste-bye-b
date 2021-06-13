@@ -2,6 +2,7 @@ class User {
   int? id;
   String? username;
   String? senha;
+  String? token;
 
   User({this.id, this.username, this.senha});
 

@@ -3,7 +3,7 @@ class HeadersAPI {
   HeadersAPI({this.token});
   Map<String, String> getHeaders() {
     return {
-      "Content-Type": "application/json-patch+json",
+      "Content-Type": "application/json",
       "Authorization": "Bearer ${this.token}"
     };
   }

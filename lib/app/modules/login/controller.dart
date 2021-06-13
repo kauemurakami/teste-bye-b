@@ -1,4 +1,3 @@
-import 'package:byebank/app/data/models/user.dart';
 import 'package:byebank/app/data/services/auth/service.dart';
 import 'package:byebank/app/data/services/configs/service.dart';
 import 'package:byebank/app/widgets/custom_snack_widget.dart';
@@ -11,8 +10,10 @@ import 'package:top_snackbar_flutter/top_snack_bar.dart';
 class LoginController extends GetxController {
   AuthService? auth;
   AppConfigService? config;
+
   final isEmail = false.obs;
   final obscure = true.obs;
+
   @override
   void onInit() {
     this.auth = Get.find<AuthService>();
@@ -30,7 +31,7 @@ class LoginController extends GetxController {
           CustomSnackBarWidget(
               data.errors, Icons.sentiment_dissatisfied_outlined));
     } else {
-      // Get.offNamed(Routes.NAVIGATION);
+      Get.offNamed(Routes.MOVIMENTACOES_SALDO);
     }
   }
 
@@ -42,7 +43,6 @@ class LoginController extends GetxController {
     } else {
       this.isEmail.value = false;
     }
-    print(this.auth?.user.value.username);
   }
 
   validateEmail(v) => GetUtils.isEmail(v) ? null : 'Insira um e-mail válido.';
