@@ -37,7 +37,7 @@ class LoginController extends GetxController {
           CustomSnackBarWidget(
               data.errors, Icons.sentiment_dissatisfied_outlined));
     } else {
-      Get.toNamed(Routes.MOVIMENTACOES_SALDO);
+      Get.toNamed(Routes.NAVIGATION);
     }
   }
 

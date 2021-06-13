@@ -2,6 +2,7 @@ import 'package:byebank/app/data/services/auth/service.dart';
 import 'package:byebank/app/data/services/configs/service.dart';
 import 'package:byebank/app/modules/login/binding.dart';
 import 'package:byebank/app/modules/login/page.dart';
+import 'package:byebank/core/theme/app_theme.dart';
 import 'package:byebank/routes/pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: LoginPage(),
+      theme: appTheme,
       initialBinding: LoginBinding(),
       initialRoute: Routes.LOGIN,
       getPages: AppPages.pages,

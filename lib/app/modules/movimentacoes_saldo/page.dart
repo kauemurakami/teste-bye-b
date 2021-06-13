@@ -1,5 +1,9 @@
 import 'package:byebank/app/modules/movimentacoes_saldo/controller.dart';
+import 'package:byebank/app/modules/movimentacoes_saldo/widgets/card_movimentacoes.dart';
+import 'package:byebank/app/modules/movimentacoes_saldo/widgets/card_saldo.dart';
+import 'package:byebank/app/modules/navigation/controller.dart';
 import 'package:byebank/app/widgets/loading.dart';
+import 'package:byebank/core/theme/text_theme.dart';
 import 'package:byebank/core/utils/percent_size.dart';
 import 'package:byebank/core/values/colors.dart';
 import 'package:byebank/core/values/strings.dart';
@@ -10,45 +14,33 @@ class MovimentacoesSaldoPage extends GetView<MovimentacoesSaldoController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor:
+            this.controller.config!.getTheme() ? blackColor : whiteColor,
         body: this.controller.obx(
             (state) => SafeArea(
                     child: Container(
-                  margin: EdgeInsets.all(24.0),
+                  margin: EdgeInsets.only(left: 24.0, top: 24.0),
                   child: Column(
                     children: [
-                      Text(saldo),
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius:
-                                (BorderRadius.all(Radius.circular(12.0)))),
-                        height: SizeConfig.hp(14.0),
-                        width: SizeConfig.wp(100.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  ' R\$ 200,00',
-                                  style: TextStyle(
-                                      fontSize: 32.0,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ],
-                            ),
-                          ],
+                      Text(
+                        saldo,
+                        style: title,
+                      ),
+                      CardSaldoWidget(),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8.0),
+                        child: Text(
+                          movimentacoes,
+                          style: title,
                         ),
                       ),
-                      Text(movimentacoes),
                       Expanded(
                           child: ListView.builder(
+                              controller:
+                                  Get.find<NavigationController>().sController,
                               itemCount: state?.value.movimentacoes?.length,
-                              itemBuilder: (_, index) => Container(
-                                    child: Text(
-                                        '${state?.value.movimentacoes?[0].tipo}'),
-                                  ))),
+                              itemBuilder: (_, index) =>
+                                  CardMovimentacoeswidget(index))),
                     ],
                   ),
                 )),

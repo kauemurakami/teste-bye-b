@@ -5,4 +5,5 @@ abstract class Routes {
   static const MOVIMENTACOES_SALDO = '/movimentacoes-saldo';
   static const APLICACAO_RESGATE = '/aplicacao-resgate';
   static const LOGIN = '/login';
+  static const NAVIGATION = '/navigation';
 }

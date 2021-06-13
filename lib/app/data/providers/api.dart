@@ -14,6 +14,7 @@ class MyApi extends GetConnect {
     final response = await post('$baseUrl/login',
         json.encode({"username": "$email", "password": "$senha"}),
         decoder: (res) {
+      print(res);
       if (res['token'] != null && res['token'] != '') {
         auth.token.value = res['token'];
       }
@@ -39,10 +40,9 @@ class MyApi extends GetConnect {
     final response = await get<Rx<Movimentacoes>>('$baseUrl/movimentacoes',
         headers: HeadersAPI(token: auth.token.value).getHeaders(),
         decoder: (res) {
-      // print(res);
+      print(res);
       var m = Movimentacoes.fromJson(res).obs;
       movs.value.movimentacoes = m.value.movimentacoes;
-      print(movs.value.movimentacoes?[0].tipo);
       return movs;
     });
     if (response.hasError) {
@@ -54,6 +54,17 @@ class MyApi extends GetConnect {
     return movs;
   }
 
-  solicitarAplicacao() {}
-  solicitarResgate() {}
+  solicitarAplicacao(valor) async {
+    final response =
+        await put('$baseUrl/aplicacao', {"valor": valor}, decoder: (res) {
+      print(res);
+    });
+  }
+
+  solicitarResgate(valor) async {
+    final response =
+        await put('$baseUrl/resgate', {"valor": valor}, decoder: (res) {
+      print(res);
+    });
+  }
 }
