@@ -3,6 +3,7 @@
 //     final movimentacoes = movimentacoesFromJson(jsonString);
 
 import 'dart:convert';
+import 'package:get/get.dart';
 
 Movimentacoes movimentacoesFromJson(String str) =>
     Movimentacoes.fromJson(json.decode(str));

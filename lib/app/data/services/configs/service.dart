@@ -1,3 +1,4 @@
+import 'package:byebank/app/data/models/app_error.dart';
 import 'package:byebank/core/values/keys.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,7 @@ class AppConfigService extends GetxService {
     return this;
   }
 
+  final message = ''.obs;
   GetStorage? box;
 
   bool getTheme() => this.box?.read(THEME);

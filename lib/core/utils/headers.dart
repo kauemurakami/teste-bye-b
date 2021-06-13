@@ -4,7 +4,7 @@ class HeadersAPI {
   Map<String, String> getHeaders() {
     return {
       "Content-Type": "application/json",
-      "Authorization": "Bearer ${this.token}"
+      "Authorization": "${this.token}"
     };
   }
 }

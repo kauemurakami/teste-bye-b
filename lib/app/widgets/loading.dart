@@ -11,7 +11,7 @@ class CustomLoadingWidget extends Container {
   Widget build(BuildContext context) {
     return SpinKitRipple(
       color: this.config.getTheme() ? whiteColor : blackColor,
-      size: SizeConfig.wp(10),
+      size: SizeConfig.wp(32.0),
     );
   }
 }

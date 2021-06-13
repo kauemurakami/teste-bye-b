@@ -25,13 +25,19 @@ class LoginController extends GetxController {
     var data = await this
         .auth
         ?.login(this.auth?.user.value.username, this.auth?.user.value.senha);
+    if (data == null) {
+      showTopSnackBar(
+          Get.overlayContext!,
+          CustomSnackBarWidget(
+              'Erro inesperado', Icons.sentiment_dissatisfied_outlined));
+    }
     if (VerifyError.verify(data)) {
       showTopSnackBar(
           Get.overlayContext!,
           CustomSnackBarWidget(
               data.errors, Icons.sentiment_dissatisfied_outlined));
     } else {
-      Get.offNamed(Routes.MOVIMENTACOES_SALDO);
+      Get.toNamed(Routes.MOVIMENTACOES_SALDO);
     }
   }
 

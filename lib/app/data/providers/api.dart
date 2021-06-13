@@ -34,17 +34,24 @@ class MyApi extends GetConnect {
   }
 
   getMovimentacoes() async {
+    var movs = Movimentacoes().obs;
     AuthService auth = Get.find<AuthService>();
     final response = await get<Rx<Movimentacoes>>('$baseUrl/movimentacoes',
         headers: HeadersAPI(token: auth.token.value).getHeaders(),
         decoder: (res) {
-      print(res);
-      return res;
+      // print(res);
+      var m = Movimentacoes.fromJson(res).obs;
+      movs.value.movimentacoes = m.value.movimentacoes;
+      print(movs.value.movimentacoes?[0].tipo);
+      return movs;
     });
     if (response.hasError) {
-      return AppError(errors: 'erro');
+      throw AppError();
     }
-    return response;
+    if (response.statusCode == 500) {
+      return AppError(errors: 'Erro desconhecido');
+    }
+    return movs;
   }
 
   solicitarAplicacao() {}
