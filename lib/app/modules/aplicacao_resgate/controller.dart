@@ -36,8 +36,9 @@ class AplicacaoResgateController extends GetxController {
             CustomSnackBarWidget(
                 'Você não possui saldo o suficiente para resgatar este valor.',
                 Icons.sentiment_neutral_outlined));
+      } else {
+        this.auth!.saldo.value -= this.movimentacao.value;
       }
-      this.auth!.saldo.value -= this.movimentacao.value;
     }
     if (this.movimentacao.value < 2.0) {
       showTopSnackBar(
@@ -66,11 +67,13 @@ class AplicacaoResgateController extends GetxController {
                   'Valor de ${this.movimentacao.value} aplicado!',
                   Icons.sentiment_satisfied_outlined));
         } else {
-          showTopSnackBar(
-              Get.overlayContext!,
-              CustomSnackBarWidget(
-                  'Valor de ${this.movimentacao.value} foi resgatado!',
-                  Icons.sentiment_satisfied_outlined));
+          if (movimentacao.value < this.auth!.saldo.value) {
+            showTopSnackBar(
+                Get.overlayContext!,
+                CustomSnackBarWidget(
+                    'Valor de ${this.movimentacao.value} foi resgatado!',
+                    Icons.sentiment_satisfied_outlined));
+          }
         }
       }
     }
