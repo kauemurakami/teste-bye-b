@@ -30,6 +30,13 @@ class AplicacaoResgateController extends GetxController {
     if (tipo == APLICACAO) {
       this.auth!.saldo.value += this.movimentacao.value;
     } else {
+      if (movimentacao.value > this.auth!.saldo.value) {
+        showTopSnackBar(
+            Get.overlayContext!,
+            CustomSnackBarWidget(
+                'Você não possui saldo o suficiente para resgatar este valor.',
+                Icons.sentiment_neutral_outlined));
+      }
       this.auth!.saldo.value -= this.movimentacao.value;
     }
     if (this.movimentacao.value < 2.0) {
