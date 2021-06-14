@@ -3,15 +3,15 @@
 ![demonstrativo](https://github.com/kauemurakami/teste-bye-b/blob/main/ezgif.com-gif-maker.gif)
 
 ## Features
-#### Login
-#### Saldo e Listagem de aplicações
-#### Aplicações
-#### Alteração de tema
-#### Logout
-#### launch-icon
-#### Ocultar/Mostrar saldo
-#### Scroll Reload (em movimentações)
-#### Native SplashScreen
+- Login
+- Saldo e Listagem de aplicações
+- Aplicações
+- Alteração de tema
+- Logout
+- launch-icon
+- Ocultar/Mostrar saldo
+- Scroll Reload (em movimentações)
+- Native SplashScreen
 
 ### Design Pattern
 - [Getx Pattern](https://github.com/kauemurakami/getx_pattern)  
