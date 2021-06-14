@@ -16,15 +16,10 @@ class MyApi extends GetConnect {
     final response = await post('$baseUrl/login',
         json.encode({"username": "$email", "password": "$senha"}),
         decoder: (res) {
-      print(res);
       // if (res['token'] != null && res['token'] != '') {
       //   auth.token.value = res['token'];
       // }
-      try {
-        auth.token.value = res['token'];
-      } catch (e) {
-        return res;
-      }
+
       return res;
     });
     if (response.statusCode == 200) {
@@ -32,11 +27,12 @@ class MyApi extends GetConnect {
         val?.username = email;
         val?.senha = senha;
       });
+      auth.token.value = response.body['token'];
       return auth.user;
     } else if (response.statusCode == 500) {
       return AppError(errors: error_inesp);
     } else {
-      return AppError.fromJson(response.body);
+      return AppError(errors: response.body);
     }
   }
 
@@ -46,7 +42,6 @@ class MyApi extends GetConnect {
     final response = await get<Rx<Movimentacoes>>('$baseUrl/movimentacoes',
         headers: HeadersAPI(token: auth.token.value).getHeaders(),
         decoder: (res) {
-      print(res);
       var m = Movimentacoes.fromJson(res).obs;
       movs.value.movimentacoes = m.value.movimentacoes;
       return movs;

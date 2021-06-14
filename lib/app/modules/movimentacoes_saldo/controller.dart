@@ -33,7 +33,6 @@ class MovimentacoesSaldoController extends GetxController
   showSaldo() => this.viewSaldo.value = !this.viewSaldo.value;
 
   getMovimentacoes() async {
-    print(this.auth?.token.value);
     await this.repository.getMovimentacoes().then((state) {
       change(state, status: RxStatus.success());
     }, onError: (err) {

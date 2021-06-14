@@ -37,6 +37,8 @@ class CustomTfWidget extends Container {
             focusColor: this.config.getTheme() ? Colors.white : Colors.black,
           )),
           child: TextField(
+            style: TextStyle(
+                color: this.config.getTheme() ? Colors.white : Colors.black),
             controller: this.controller,
             obscureText: this.obscure,
             onChanged: (v) => this.onChanged!(v),

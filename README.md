@@ -1,5 +1,9 @@
 # byebank
 
+
+### Overview
+
+
 ## Features
 #### Login
 #### Saldo e Listagem de aplicações
@@ -7,6 +11,8 @@
 #### Alteração de tema
 #### Logout
 #### launch-icon
+#### Ocultar/Mostrar saldo
+#### Scroll Reload (em movimentações)
 #### Native SplashScreen
 
 ### Design Pattern
@@ -24,7 +30,7 @@
 ### Getting Started
 - Clone :: main  
 - $ flutter pub get ou $ flutter packages get  
-- $ flutter run --no-sound-null-safety  
+- $ flutter run --no-sound-null-safety ( alguns pacotes nao possuem nullsafety, por isso a flag)
 
 ### Download release apk
 - [APK](https://github.com/kauemurakami/teste-bye-b/raw/main/fast-test-apk-release.apk)
