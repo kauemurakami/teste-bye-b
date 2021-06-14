@@ -64,14 +64,14 @@ class AplicacaoResgateController extends GetxController {
           showTopSnackBar(
               Get.overlayContext!,
               CustomSnackBarWidget(
-                  'Valor de ${this.movimentacao.value} aplicado!',
+                  'Valor de R\$ ${this.movimentacao.value} aplicados!',
                   Icons.sentiment_satisfied_outlined));
         } else {
           if (movimentacao.value < this.auth!.saldo.value) {
             showTopSnackBar(
                 Get.overlayContext!,
                 CustomSnackBarWidget(
-                    'Valor de ${this.movimentacao.value} foi resgatado!',
+                    'Valor de R\$ ${this.movimentacao.value} foi resgatados!',
                     Icons.sentiment_satisfied_outlined));
           }
         }
