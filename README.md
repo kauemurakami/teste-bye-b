@@ -12,6 +12,7 @@
 - Ocultar/Mostrar saldo
 - Scroll Reload (em movimentações)
 - Native SplashScreen
+- Reload if find error
 
 ### Design Pattern
 - [Getx Pattern](https://github.com/kauemurakami/getx_pattern)  
