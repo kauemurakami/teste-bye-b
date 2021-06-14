@@ -47,13 +47,15 @@ class CardSaldoWidget extends Container {
                   IconButton(
                       padding: EdgeInsets.only(right: 8.0),
                       onPressed: () => this.controller.showSaldo(),
-                      icon: Icon(
-                        Icons.remove_red_eye_outlined,
-                        size: 40.0,
-                        color: this.controller.config!.getTheme()
-                            ? blackColor
-                            : whiteColor,
-                      ))
+                      icon: Obx(() => Icon(
+                            this.controller.viewSaldo.value
+                                ? Icons.remove_red_eye_outlined
+                                : Icons.visibility_off,
+                            size: 40.0,
+                            color: this.controller.config!.getTheme()
+                                ? blackColor
+                                : whiteColor,
+                          )))
                 ],
               ),
             ],
