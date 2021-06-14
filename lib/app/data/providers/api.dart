@@ -32,7 +32,7 @@ class MyApi extends GetConnect {
     } else if (response.statusCode == 500) {
       return AppError(errors: error_inesp);
     } else {
-      return AppError(errors: response.body);
+      return AppError(errors: 'Email ou senha Incorretos');
     }
   }
 
