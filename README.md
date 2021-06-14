@@ -1,8 +1,33 @@
 # byebank
 
-A new Flutter project.
+## Features
+#### Login
+#### Saldo e Listagem de aplicações
+#### Aplicações
+#### Alteração de tema
+#### Logout
+#### launch-icon
+#### Native SplashScreen
 
-## Getting Started
+### Design Pattern
+- [Getx Pattern](https://github.com/kauemurakami/getx_pattern)  
+
+### Editor
+- VS Code <ultima versão>  
+
+### HTTP Cliente
+- Insomnia
+
+### Plugins
+- [Getx Snippets](https://marketplace.visualstudio.com/items?itemName=get-snippets.get-snippets&ssr=false#overview)
+
+### Getting Started
+- Clone :: main  
+- $ flutter pub get ou $ flutter packages get  
+- $ flutter run --no-sound-null-safety  
+
+### Download release apk
+- [APK](https://github.com/kauemurakami/teste-bye-b/raw/main/fast-test-apk-release.apk)
 
 This project is a starting point for a Flutter application.
 
