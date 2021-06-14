@@ -1,7 +1,7 @@
 import 'package:byebank/app/modules/movimentacoes_saldo/controller.dart';
-import 'package:byebank/app/modules/movimentacoes_saldo/widgets/card_movimentacoes.dart';
 import 'package:byebank/app/modules/movimentacoes_saldo/widgets/card_saldo.dart';
-import 'package:byebank/app/modules/navigation/controller.dart';
+import 'package:byebank/app/modules/movimentacoes_saldo/widgets/header.dart';
+import 'package:byebank/app/modules/movimentacoes_saldo/widgets/list_movimentacoes.dart';
 import 'package:byebank/app/widgets/loading.dart';
 import 'package:byebank/core/theme/text_theme.dart';
 import 'package:byebank/core/utils/percent_size.dart';
@@ -22,25 +22,16 @@ class MovimentacoesSaldoPage extends GetView<MovimentacoesSaldoController> {
                   margin: EdgeInsets.only(left: 24.0, top: 24.0),
                   child: Column(
                     children: [
-                      Text(
-                        saldo,
-                        style: title,
-                      ),
+                      HeaderWidget(),
                       CardSaldoWidget(),
                       Padding(
-                        padding: const EdgeInsets.only(bottom: 8.0),
+                        padding: const EdgeInsets.only(bottom: 16.0),
                         child: Text(
                           movimentacoes,
                           style: title,
                         ),
                       ),
-                      Expanded(
-                          child: ListView.builder(
-                              controller:
-                                  Get.find<NavigationController>().sController,
-                              itemCount: state?.value.movimentacoes?.length,
-                              itemBuilder: (_, index) =>
-                                  CardMovimentacoeswidget(index))),
+                      CustomListMovimentacoesWidget()
                     ],
                   ),
                 )),

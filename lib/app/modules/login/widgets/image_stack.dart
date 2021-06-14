@@ -1,7 +1,6 @@
 import 'package:byebank/core/utils/percent_size.dart';
 import 'package:byebank/core/values/keys.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class ImageLoginStakWidget extends Container {
   @override

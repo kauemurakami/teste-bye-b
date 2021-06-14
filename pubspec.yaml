@@ -34,7 +34,6 @@ dependencies:
   cupertino_icons: ^1.0.2
   lamp_bottom_navigation: ^0.1.1
   floating_action_bubble: 1.0.9
-  
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +69,7 @@ flutter:
     - assets/images/darkmode.jpg
     - assets/images/ligthmode.jpg
     - assets/images/not_bank.png
+    - assets/images/money.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

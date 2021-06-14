@@ -5,6 +5,5 @@ class AplicacaoResgateRepository {
 
   AplicacaoResgateRepository(this.api);
 
-  aplicar(valor) => this.api.solicitarAplicacao(valor);
-  resgatar(valor) => this.api.solicitarResgate(valor);
+  movimentacao(tipo, valor) => this.api.movimentacao(tipo, valor);
 }

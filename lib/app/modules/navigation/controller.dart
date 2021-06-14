@@ -1,3 +1,4 @@
+import 'package:byebank/app/data/services/auth/service.dart';
 import 'package:byebank/app/data/services/configs/service.dart';
 import 'package:byebank/app/modules/aplicacao_resgate/binding.dart';
 import 'package:byebank/app/modules/aplicacao_resgate/page.dart';
@@ -10,6 +11,7 @@ import 'package:get/get.dart';
 class NavigationController extends GetxController
     with SingleGetTickerProviderMixin {
   AppConfigService? config;
+  AuthService? auth;
   Animation<double>? animation;
   AnimationController? animationController;
   CurvedAnimation? curvedAnimation;
@@ -25,6 +27,7 @@ class NavigationController extends GetxController
     this.animation =
         Tween<double>(begin: 0, end: 1).animate(this.curvedAnimation!);
     this.config = Get.find<AppConfigService>();
+    this.auth = Get.find<AuthService>();
     super.onInit();
   }
 
@@ -44,12 +47,14 @@ class NavigationController extends GetxController
       return GetPageRoute(
           settings: settings,
           page: () => MovimentacoesSaldoPage(),
+          transition: Transition.leftToRight,
           binding: MovimentacoesSaldoBinding());
     }
     if (settings.name == Routes.APLICACAO_RESGATE) {
       return GetPageRoute(
           settings: settings,
           page: () => AplicacaoResgatePage(),
+          transition: Transition.rightToLeft,
           binding: AplicacaoResgateBinding());
     }
     return null;

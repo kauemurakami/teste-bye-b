@@ -70,7 +70,19 @@ class CardSaldoWidget extends Container {
                     : Colors.greenAccent,
                 fontSize: 12.0),
           ),
-        )
+        ),
+        Positioned(
+          left: 24.0,
+          top: 16.0,
+          child: Text(
+            saldo,
+            style: TextStyle(
+                color: this.controller.config!.getTheme()
+                    ? blackColor
+                    : whiteColor,
+                fontSize: 16.0),
+          ),
+        ),
       ],
     );
   }

@@ -52,5 +52,6 @@ class MovimentacoesSaldoController extends GetxController
         this.saldo.value -= element.valor!;
       }
     });
+    this.auth!.saldo.value = this.saldo.value;
   }
 }

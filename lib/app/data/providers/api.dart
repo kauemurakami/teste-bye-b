@@ -4,6 +4,8 @@ import 'package:byebank/app/data/models/movimentacoes.dart';
 import 'package:byebank/app/data/models/user.dart';
 import 'package:byebank/app/data/services/auth/service.dart';
 import 'package:byebank/core/utils/headers.dart';
+import 'package:byebank/core/values/keys.dart';
+import 'package:byebank/core/values/strings.dart';
 import 'package:get/get.dart';
 
 const baseUrl = 'https://mrwffgnpgf.execute-api.sa-east-1.amazonaws.com/prod';
@@ -15,10 +17,14 @@ class MyApi extends GetConnect {
         json.encode({"username": "$email", "password": "$senha"}),
         decoder: (res) {
       print(res);
-      if (res['token'] != null && res['token'] != '') {
+      // if (res['token'] != null && res['token'] != '') {
+      //   auth.token.value = res['token'];
+      // }
+      try {
         auth.token.value = res['token'];
+      } catch (e) {
+        return res;
       }
-
       return res;
     });
     if (response.statusCode == 200) {
@@ -28,7 +34,7 @@ class MyApi extends GetConnect {
       });
       return auth.user;
     } else if (response.statusCode == 500) {
-      return AppError(errors: 'Erro desconhecido');
+      return AppError(errors: error_inesp);
     } else {
       return AppError.fromJson(response.body);
     }
@@ -49,22 +55,31 @@ class MyApi extends GetConnect {
       throw AppError();
     }
     if (response.statusCode == 500) {
-      return AppError(errors: 'Erro desconhecido');
+      return AppError(errors: error_inesp);
     }
     return movs;
   }
 
-  solicitarAplicacao(valor) async {
-    final response =
-        await put('$baseUrl/aplicacao', {"valor": valor}, decoder: (res) {
-      print(res);
-    });
-  }
+  movimentacao(tipo, valor) async {
+    AuthService auth = Get.find<AuthService>();
 
-  solicitarResgate(valor) async {
-    final response =
-        await put('$baseUrl/resgate', {"valor": valor}, decoder: (res) {
-      print(res);
+    String url;
+    if (tipo == APLICACAO) {
+      url = '$baseUrl/aplicacao';
+    } else {
+      url = '$baseUrl/resgate';
+    }
+    final response = await put(url, json.encode({"valor": valor}),
+        headers: HeadersAPI(token: auth.token.value).getHeaders(),
+        decoder: (res) {
+      return res;
     });
+    if (response.statusCode == 201) {
+      return auth.saldo.value;
+    } else if (response.statusCode == 500) {
+      return AppError(errors: error_inesp);
+    } else {
+      return AppError(errors: response.body.toString());
+    }
   }
 }

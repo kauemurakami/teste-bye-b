@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 class CustomButtonWidget extends Container {
   final config = Get.find<AppConfigService>();
   final text, color, callback;
-  CustomButtonWidget(this.callback, this.text, this.color);
+  CustomButtonWidget({this.callback, this.text, this.color});
   @override
   Widget build(BuildContext context) {
     return MaterialButton(

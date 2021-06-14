@@ -1,5 +1,6 @@
 import 'package:byebank/app/modules/navigation/controller.dart';
 import 'package:byebank/core/values/colors.dart';
+import 'package:byebank/core/values/strings.dart';
 import 'package:byebank/routes/pages.dart';
 import 'package:floating_action_bubble/floating_action_bubble.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class CustomFloatingButtonMenuWidget extends Container {
       // Menu items
       items: <Bubble>[
         Bubble(
-          title: "Sair",
+          title: sair,
           iconColor: redColor,
           bubbleColor:
               this.controller.config!.getTheme() ? whiteColor : blackColor,
@@ -26,11 +27,11 @@ class CustomFloatingButtonMenuWidget extends Container {
                   this.controller.config!.getTheme() ? blackColor : whiteColor),
           onPress: () {
             this.controller.animationController?.reverse();
-            Get.offAllNamed(Routes.LOGIN);
+            this.controller.auth!.logout();
           },
         ),
         Bubble(
-          title: "Tema",
+          title: stema,
           iconColor:
               this.controller.config!.getTheme() ? blackColor : whiteColor,
           bubbleColor:

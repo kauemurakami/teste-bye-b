@@ -3,7 +3,6 @@ import 'package:byebank/app/modules/login/widgets/image_stack.dart';
 import 'package:byebank/app/modules/login/widgets/login_form.dart';
 import 'package:byebank/app/widgets/button_theme.dart';
 import 'package:byebank/app/widgets/custom_button.dart';
-import 'package:byebank/app/widgets/custom_tff.dart';
 import 'package:byebank/core/utils/percent_size.dart';
 import 'package:byebank/core/values/colors.dart';
 import 'package:byebank/core/values/keys.dart';
@@ -50,15 +49,15 @@ class LoginPage extends GetView<LoginController> {
                             margin: EdgeInsets.only(top: 24.0),
                             width: SizeConfig.wp(30.0),
                             child: CustomButtonWidget(
-                              () async {
+                              callback: () async {
                                 final FormState form = _formKey.currentState!;
                                 if (form.validate()) {
                                   form.save();
                                   await this.controller.login();
                                 }
                               },
-                              entrar,
-                              this.controller.config!.getTheme()
+                              text: entrar,
+                              color: this.controller.config!.getTheme()
                                   ? whiteColor
                                   : blackColor,
                             ),
